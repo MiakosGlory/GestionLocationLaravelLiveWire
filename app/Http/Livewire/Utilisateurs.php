@@ -199,12 +199,18 @@ class Utilisateurs extends Component
 
         foreach($this->listeRolePermission["roles"] as $role)
         {
-            User::find($this->editUser["id"])->roles->attach($role["role_id"]);
+            if($role["active"])
+            {
+                User::find($this->editUser["id"])->roles()->attach($role["role_id"]);
+            }
         }
 
         foreach($this->listeRolePermission["permissions"] as $permission)
         {
-            User::find($this->editUser["id"])->permissions->attach($permission["permission_id"]);
+            if($permission["active"])
+            {
+                User::find($this->editUser["id"])->permissions()->attach($permission["permission_id"]);
+            }
         }
 
         $this->dispatchBrowserEvent("showSuccessMessage", ["message" => "Bien modifié"]);
