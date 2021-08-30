@@ -1,14 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+/*use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtilisateurController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TypeArticleController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\TarificationController;
-use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PermissionController;*/
 use App\Http\Livewire\Utilisateurs;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,15 +27,16 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Route admin
 /*Route::group([
     "middleware" => ["auth", "auth.admin"],
-    'as' => 'admin.'
+    "as" => "admin."
 ], function(){
     Route::group([
-        "prefix" => "habilitation",
-        'as' => 'habilitation.'
+        "prefix" => "habilitations",
+        "as" => "habilitation." 
     ], function(){
-        Route::get('/util', [Utilisateurs::class])->name('users.index');
+        Route::get("/ghabil", [Utilisateurs::class])->name('users.index');
     });
 });*/
 

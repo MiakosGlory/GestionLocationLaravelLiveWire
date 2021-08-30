@@ -31,7 +31,7 @@
                     <tr>
                         <td>{{$user->sexe}}</td>
                         <td>{{$user->nom}} {{$user->prenom}}</td>
-                        <td>{{$user->roles->implode("nom", "|")}}</td>
+                        <td>{{$user->roles->implode("nom", " | ")}}</td>
                         <td class="text-center" ><span class="tag tag-success">{{$user->created_at
                             ->diffforHumans()}}</span></td>
                         <td class="text-center">

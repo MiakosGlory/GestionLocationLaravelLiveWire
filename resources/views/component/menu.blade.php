@@ -46,7 +46,7 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route("permission")}}" class="nav-link">
+                        <a href="#" class="nav-link">
                           <i class="fas fa-lock nav-icon"></i>
                           <p>Permissions</p>
                         </a>
@@ -61,7 +61,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="{{route("articles")}}" class="nav-link">
+                      <a href="#" class="nav-link">
                         <i class="fas fa-circle nav-icon"></i>
                         <p>Articles</p>
                       </a>
@@ -73,7 +73,7 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route("tarifications")}}" class="nav-link">
+                        <a href="#" class="nav-link">
                           <i class="fas fa-dollar-sign nav-icon"></i>
                           <p>Tarifications</p>
                         </a>
@@ -84,20 +84,20 @@
             @can('employe')
             <li class="nav-header">LOCATION</li>
             <li class="nav-item">
-                <a href="{{route("clients")}}" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="nav-icon far fa-address-card"></i>
                   <p>Gestion Clients</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route("locations")}}" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="nav-icon far fa-image"></i>
                   <p>Gestion Locations</p>
                 </a>
             </li>
             <li class="nav-header">CLASSE</li>
             <li class="nav-item">
-                <a href="{{route("paiements")}}" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="nav-icon far fa-money-bill-alt"></i>
                   <p>Gestion Paiements</p>
                 </a>

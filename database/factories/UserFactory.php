@@ -28,7 +28,7 @@ class UserFactory extends Factory
             "sexe" => array_rand(["M", "F"], 1),
             "telephone" => $this->faker->unique()->phoneNumber,
             "email" => $this->faker->unique()->safeEmail(),
-            "pieceIdentite" => array_rand(["CNI", "PASSPORT", "PERMIS DE CONDUIRE", 1]),
+            "pieceIdentite" => array_rand(["CNI", "PASSPORT", "PERMIS DE CONDUIRE"], 1),
             "numeroPieceIdentite" => $this->faker->creditCardNumber,
             "password" => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             "photo" => $this->faker->imageUrl()
