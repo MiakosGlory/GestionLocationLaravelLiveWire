@@ -10,6 +10,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\TarificationController;
 use App\Http\Controllers\PermissionController;*/
 use App\Http\Livewire\Utilisateurs;
+use App\Http\Livewire\TypeArticleComp;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -40,13 +41,14 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
     });
 });*/
 
+
 Route::get('/ghabil', Utilisateurs::class)->name('habilitation')->middleware('auth.admin');
 //Route::get('/ghabil', [UserController::class, 'index'])->name('habilitation')->middleware('auth.admin');
-Route::get('/gperm', [PermissionController::class, 'index'])->name('permission')->middleware('auth.admin');
-Route::get('/gclte', [ClientController::class, 'index'])->name('clients')->middleware('auth.employe');
-Route::get('/gloca', [LocationController::class, 'index'])->name('locations')->middleware('auth.employe');
+//Route::get('/gperm', [PermissionController::class, 'index'])->name('permission')->middleware('auth.admin');
+//Route::get('/gclte', [ClientController::class, 'index'])->name('clients')->middleware('auth.employe');
+//Route::get('/gloca', [LocationController::class, 'index'])->name('locations')->middleware('auth.employe');
 //Route::get('/gutil', [UtilisateurController::class, 'index'])->name('utilisateurs')->middleware('auth.admin');
-Route::get('/gutil', [PaiementController::class, 'index'])->name('paiements')->middleware('auth.employe');
-Route::get('/gutil', [TypeArticleController::class, 'index'])->name('type_article')->middleware('auth.superadmin');
-Route::get('/gartic', [ArticleController::class, 'index'])->name('articles')->middleware('auth.superadmin');
-Route::get('/gutil', [TarificationController::class, 'index'])->name('tarifications')->middleware('auth.superadmin');
+//Route::get('/gutil', [PaiementController::class, 'index'])->name('paiements')->middleware('auth.employe');
+Route::get('/garticle', TypeArticleComp::class)->name('type_article')->middleware('auth.superadmin');
+//Route::get('/gartic', [ArticleController::class, 'index'])->name('articles')->middleware('auth.superadmin');
+//Route::get('/gutil', [TarificationController::class, 'index'])->name('tarifications')->middleware('auth.superadmin');

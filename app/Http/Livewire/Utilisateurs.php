@@ -10,6 +10,7 @@ use App\Models\Permission;
 use Livewire\WithPagination;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 
 class Utilisateurs extends Component
@@ -29,6 +30,8 @@ class Utilisateurs extends Component
 
     public function render()
     {
+        Carbon::setlocale("fr");
+
         return view('livewire.utilisateurs.index', [
                 "users" => User::where("nom", "LIKE", "%{$this->seach}%")
                     ->latest()->paginate(5)

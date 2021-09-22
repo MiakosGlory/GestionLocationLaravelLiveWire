@@ -1,2 +1,10 @@
 @import "~admin-lte/plugins/fontawesome-free/css/all.css";
 @import "~admin-lte/dist/css/adminlte.css";
+
+.modal.fade{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-backdrop.fade{
+    opacity: 0;
+}

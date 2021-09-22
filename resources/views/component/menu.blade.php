@@ -67,7 +67,7 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="" class="nav-link">
+                      <a href="{{route("type_article")}}" class="nav-link">
                         <i class="fas fa-circle nav-icon"></i>
                         <p>Type Article</p>
                       </a>
@@ -82,7 +82,7 @@
             </li>
             @endcan
             @can('employe')
-            <li class="nav-header">LOCATION</li>
+            <!--<li class="nav-header">LOCATION</li>
             <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon far fa-address-card"></i>
@@ -101,7 +101,7 @@
                   <i class="nav-icon far fa-money-bill-alt"></i>
                   <p>Gestion Paiements</p>
                 </a>
-            </li>
+            </li>-->
             @endcan
           </li>
         </ul>
