@@ -5,7 +5,7 @@
                 <div class="card-header">
                     <h3 class="card-title"><i class="fas fa-user-plus fa-2x"></i>Ajout d'un utilisateur</h3>
                 </div>
-                <form role="form" wire:submit.prevent="addUser()">
+                <form role="form" wire:submit.prevent="addUser()" enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="form-group flex-grow-1 mr-2">

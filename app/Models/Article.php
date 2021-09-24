@@ -9,6 +9,12 @@ class Article extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "nom", "numeroDeSerie", 
+        "image", "estDisponible", 
+        "type_article_id"
+    ];
+
     public function typeArticle()
     {
         return $this->belongsTo(TypeArticle::class);

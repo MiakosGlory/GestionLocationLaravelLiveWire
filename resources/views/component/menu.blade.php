@@ -33,14 +33,14 @@
             </a>
             @can('admin')
             <li class="nav-item menu-open">
-                <a href="" class="nav-link active">
+                <a class="nav-link bg-blue">
                     <i class="far fa-circle nav-icon"></i>
                     <i class="fas fa-angle-left right"></i>
                     <p>Habilitations</p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="{{route("habilitation")}}" class="nav-link active">
+                      <a href="{{route("habilitation")}}" class="nav-link">
                         <i class="fas fa-users nav-icon"></i>
                         <p>Utilisateurs</p>
                       </a>
@@ -53,28 +53,28 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link">
+            <li class="nav-item menu-open">
+                <a class="nav-link bg-blue">
                     <i class="far fa-circle nav-icon"></i>
                     <i class="fas fa-angle-left right"></i>
                     <p>Gestion Articles</p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="#" class="nav-link">
-                        <i class="fas fa-circle nav-icon"></i>
+                      <a href="{{route("article")}}" class="nav-link">
+                        <i class="fas fa-archive nav-icon"></i>
                         <p>Articles</p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a href="{{route("type_article")}}" class="nav-link">
-                        <i class="fas fa-circle nav-icon"></i>
+                        <i class="fas fa-th-list nav-icon"></i>
                         <p>Type Article</p>
                       </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                          <i class="fas fa-dollar-sign nav-icon"></i>
+                          <i class="fas fa-money-check-alt nav-icon"></i>
                           <p>Tarifications</p>
                         </a>
                     </li>

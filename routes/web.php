@@ -11,6 +11,7 @@ use App\Http\Controllers\TarificationController;
 use App\Http\Controllers\PermissionController;*/
 use App\Http\Livewire\Utilisateurs;
 use App\Http\Livewire\TypeArticleComp;
+use App\Http\Livewire\Articles;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -50,5 +51,6 @@ Route::get('/ghabil', Utilisateurs::class)->name('habilitation')->middleware('au
 //Route::get('/gutil', [UtilisateurController::class, 'index'])->name('utilisateurs')->middleware('auth.admin');
 //Route::get('/gutil', [PaiementController::class, 'index'])->name('paiements')->middleware('auth.employe');
 Route::get('/garticle', TypeArticleComp::class)->name('type_article')->middleware('auth.superadmin');
+Route::get('/article', Articles::class)->name('article')->middleware('auth.superadmin');
 //Route::get('/gartic', [ArticleController::class, 'index'])->name('articles')->middleware('auth.superadmin');
 //Route::get('/gutil', [TarificationController::class, 'index'])->name('tarifications')->middleware('auth.superadmin');
