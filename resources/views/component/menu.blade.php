@@ -24,7 +24,7 @@
                with font-awesome or any other icon font library -->
 
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link">
+            <a class="nav-link bg-dark">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 MENU
@@ -33,7 +33,7 @@
             </a>
             @can('admin')
             <li class="nav-item menu-open">
-                <a class="nav-link bg-blue">
+                <a class="nav-link bg-secondary">
                     <i class="far fa-circle nav-icon"></i>
                     <i class="fas fa-angle-left right"></i>
                     <p>Habilitations</p>
@@ -54,7 +54,7 @@
                 </ul>
             </li>
             <li class="nav-item menu-open">
-                <a class="nav-link bg-blue">
+                <a class="nav-link bg-secondary">
                     <i class="far fa-circle nav-icon"></i>
                     <i class="fas fa-angle-left right"></i>
                     <p>Gestion Articles</p>

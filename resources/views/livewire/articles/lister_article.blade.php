@@ -33,7 +33,13 @@
                     <tr>
                         <td>{{$article->nom}}</td>
                         <td>{{$article->numeroDeSerie}}</td>
-                        <td>{{$article->estDisponible}}</td>
+                        <td>
+                            @if ($article->estDisponible == 1)
+                                <span class="right badge badge-success pr-3 pl-3">OUI</span>
+                            @else
+                                <span class="right badge badge-danger pr-3 pl-3">NON</span>
+                            @endif
+                        </td>
                         <td>{{$article->typeArticle->nom}}</td>
                         <td class="text-center" ><span class="tag tag-success">{{$article->created_at
                             ->diffforHumans()}}</span>
