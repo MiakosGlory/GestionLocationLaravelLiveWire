@@ -1,5 +1,7 @@
 <div>
 
+    @include("livewire.articles.edit_article")
+
     @include("livewire.articles.create_article")
 
     @include("livewire.articles.lister_article")
@@ -55,5 +57,22 @@
 <script>
    window.addEventListener("closeAddArticleModal", event => {
     $("#modalAddArticle").modal("hide")
+})
+</script>
+
+<!-- Modal Editer des articles -->
+<script>
+    window.addEventListener("showEditArticleModal", event => {
+    $("#modalEditArticle").modal({
+        "show" : true,
+        "backdrop" : "static"
+    })
+})
+</script>
+
+<!-- Modal fermeture editer des articles -->
+<script>
+   window.addEventListener("closeEditArticleModal", event => {
+    $("#modalEditArticle").modal("hide")
 })
 </script>

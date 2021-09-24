@@ -23,7 +23,7 @@
                     <th style="width:20%">Numéro de Serie</th>
                     <th style="width:25%">Disponibilité</th>
                     <th style="width:20%">Type</th>
-                    <th style="width:25%">Ajouté le</th>
+                    <th style="width:25%">Ajouté</th>
                     <th style="width:20%">Image</th>
                     <th class="text-center" style="width:30%">Action</th>
                     </tr>
@@ -35,7 +35,7 @@
                         <td>{{$article->numeroDeSerie}}</td>
                         <td>
                             @if ($article->estDisponible == 1)
-                                <span class="right badge badge-success pr-3 pl-3">OUI</span>
+                                <span class="right badge badge-success pr-3 pl-3">OUI </span>
                             @else
                                 <span class="right badge badge-danger pr-3 pl-3">NON</span>
                             @endif
@@ -46,7 +46,7 @@
                         </td>
                         <td><img src="{{$article->image}}" height="50px;" width="50px;"></td>
                         <td class="text-center">
-                            <button class="btn btn-link" wire:click.prevent="goToEditArticle({{$article->id}})"><i class="far fa-edit"></i></button>
+                            <button class="btn btn-link" wire:click.prevent="editArticleModal({{$article->id}})"><i class="far fa-edit"></i></button>
                             <button class="btn btn-link" wire:click.prevent="showDeleteArticle({{$article->id}})"><i class="far fa-trash-alt"></i></button>
                         </td>
                         </tr>

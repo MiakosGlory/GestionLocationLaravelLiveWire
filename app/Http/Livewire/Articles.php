@@ -18,6 +18,8 @@ class Articles extends Component
     public $newArticle = "";
     public $path_image;
 
+    public $editArticle = [];
+
     public function render()
     {
         Carbon::setlocale("fr");
@@ -35,11 +37,14 @@ class Articles extends Component
 
     public function addArticleModal()
     {
+        $this->resetErrorBag();
         $this->dispatchBrowserEvent("showAddArticleModal", []);
     }
 
     public function closeAddArticleModal()
     {
+        $this->newArticle = [];
+        $this->resetErrorBag();
         $this->dispatchBrowserEvent("closeAddArticleModal", []);
     }
 
@@ -52,32 +57,17 @@ class Articles extends Component
             "newArticle.type_article_id" => "required"
         ]);
 
-        if(file("image"))
-        {
-            $path_image = $this->path_image->storage("public");
-
-            Article::create([
-                "nom" => $this->newArticle["nom"],
-                "numeroDeSerie" => $this->newArticle["numeroDeSerie"],
-                "image" => $path_image,
-                "estDisponible" => $this->newArticle["estDisponible"],
-                "type_article_id" => $this->newArticle["type_article_id"]
-            ]);
-        }
-        else
-        {
-            Article::create([
-                "nom" => $this->newArticle["nom"],
-                "numeroDeSerie" => $this->newArticle["numeroDeSerie"],
-                "image" => " ",
-                "estDisponible" => $this->newArticle["estDisponible"],
-                "type_article_id" => $this->newArticle["type_article_id"]
-            ]);
-        }
         
-        $this->newArticle = [];
-        $this->resetErrorBag();
-        $this->dispatchBrowserEvent("showSuccessMessage", ["message" => "Ajout réussie"]);
+        Article::create([
+            "nom" => $this->newArticle["nom"],
+            "numeroDeSerie" => $this->newArticle["numeroDeSerie"],
+            "image" => "https://fakeimg.pl/350x200/ff0000/000",
+            "estDisponible" => $this->newArticle["estDisponible"],
+            "type_article_id" => $this->newArticle["type_article_id"]
+        ]);
+        
+        $this->dispatchBrowserEvent("showSuccessMessage", ["message" => "Article ajouté avec succès"]);
+        $this->closeAddArticleModal();
     }
 
     public function showDeleteArticle($id)
@@ -94,5 +84,44 @@ class Articles extends Component
     {
         $article->delete();
         $this->dispatchBrowserEvent("showSuccessMessage", ["message" => "Article supprimé avec succès"]);
+    }
+
+    public function editArticleModal(Article $article)
+    {
+        $this->editArticle["nom"] = $article->nom;
+        $this->editArticle["numeroDeSerie"] = $article->numeroDeSerie;
+        $this->editArticle["estDisponible"] = $article->estDisponible;
+        $this->editArticle["type_article_id"] = $article->type_article_id;
+        $this->editArticle["id"] = $article->id;
+
+        $this->dispatchBrowserEvent("showEditArticleModal", []);
+    }
+
+    public function closeEditArticleModal()
+    {
+        $this->resetErrorBag();
+        $this->dispatchBrowserEvent("closeEditArticleModal", []);
+    }
+
+    public function updateArticle()
+    {
+        $this->validate([
+            "editArticle.nom" => ["required", Rule::unique("articles", 
+                    "nom")->ignore($this->editArticle["id"])],
+            "editArticle.estDisponible" => "required",
+            "editArticle.type_article_id" => "required",
+            "editArticle.numeroDeSerie" => ["required", "max:6", "min:2", 
+                    Rule::unique("articles", "numeroDeSerie")->ignore($this->editArticle["id"])]
+        ]);
+
+        Article::find($this->editArticle["id"])->update([
+            "nom" => $this->editArticle["nom"],
+            "estDisponible" => $this->editArticle["estDisponible"],
+            "numeroDeSerie" => $this->editArticle["numeroDeSerie"],
+            "type_article_id" => $this->editArticle["type_article_id"]
+        ]);
+
+        $this->dispatchBrowserEvent("showSuccessMessage", ["message" => "Article modifié avec succès"]);
+        $this->closeEditArticleModal();
     }
 }

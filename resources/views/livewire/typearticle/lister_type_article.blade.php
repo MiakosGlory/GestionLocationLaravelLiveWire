@@ -20,7 +20,7 @@
                 <thead>
                     <tr>
                         <th style="width:50%">Type d'article</th>
-                        <th class="text-center" style="width:20%">Ajouté le</th>
+                        <th class="text-center" style="width:20%">Ajouté</th>
                         <th class="text-center" style="width:30%">Action</th>
                     </tr>
                 </thead>

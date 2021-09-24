@@ -69,8 +69,6 @@ class TypeArticleComp extends Component
 
     public function editTypeArticle(TypeArticle $typeArt)
     {
-        //$typeArt = TypeArticle::find($id);
-
         $this->dispatchBrowserEvent("showEditTypeArticleForm", ["typearticle" => $typeArt]);
     }
 
@@ -105,6 +103,7 @@ class TypeArticleComp extends Component
 
     public function showModalProp(TypeArticle $type)
     {
+        $this->resetErrorBag();
         $this->selectedTypeArticle = $type;
         $this->dispatchBrowserEvent("showModal", []);
     }
@@ -152,7 +151,7 @@ class TypeArticleComp extends Component
     public function editPropTypeArticle(ProprieteArticle $prop)
     {
         $this->editPropTypeArticle["nom"] = $prop->nom;
-        $this->editPropTypeArticle["estObligatoire"] = $prop->nom;
+        $this->editPropTypeArticle["estObligatoire"] = $prop->estObligatoire;
         $this->editPropTypeArticle["id"] = $prop->id;
 
         $this->dispatchBrowserEvent("showEditModal", []);
