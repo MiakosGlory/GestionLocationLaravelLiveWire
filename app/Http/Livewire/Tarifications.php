@@ -18,7 +18,10 @@ class Tarifications extends Component
     use WithPagination;
 
     public $isAddTarification = false;
-    public $newTarification = [];
+
+    public $isEditTarification = false;
+    public $newTarification = "";
+    public $editTarification = "";
 
     public function render()
     {
@@ -49,6 +52,26 @@ class Tarifications extends Component
         }
     }
 
+    public function editTarificationForm(Tarification $tarif)
+    {
+        if($this->isEditTarification)
+        {
+            $this->isEditTarification = false;
+            $this->editTarification = "";
+            $this->resetErrorBag();
+        }
+        else
+        {
+            
+
+            /*$this->editTarification["article_id"] = $tarif->article_id;
+            $this->editTarification["duree_location_id"] = $tarif->duree_locattion_id;
+            $this->editTarification["prix"] = $tarif->prix;*/
+            $this->isEditTarification = true;
+            //$this->dispatchBrowserEvent("showEditTarificationModal", []);
+        }
+    }
+
     public function addTarification()
     {
         $this->validate([
@@ -63,5 +86,22 @@ class Tarifications extends Component
             "article_id" =>  $this->newTarification["article_id"]
         ]);
         $this->dispatchBrowserEvent("showSuccessMessage", ["message" => "Tarification bien ajoutée"]);
+    }
+
+    public function updateTarification()
+    {
+        $this->validate([
+            "editTarification.article_id" => "required",
+            "editTarification.duree_location_id" => "required",
+            "editTarification.prix" => "required",
+        ]);
+
+        Tarification::find($this->editTarification["id"])->update([
+            "article_id" => $this->editTarification["article_id"],
+            "duree_location_id" => $this->editTarification["duree_location_id"],
+            "prix" => $this->editTarification["prix"]
+        ]);
+
+        $this->dispatchBrowserEvent("showSuccessMessage", ["message" => "Tarificcation modifiée avec succès"]);
     }
 }

@@ -19,7 +19,7 @@
                 <table class="table table-head-fixed text-nowrap">
                 <thead>
                     @if ($isAddTarification)
-                    <form role="form" wire:submit.prevent="addTarification">
+                    <form role="form">
                         <div class="d-flex mb-4 bg-gray-light p-3 pt-4">
                             <div class="col-3">
                                 <div class="flex-grow-1 mr-2 mb-3">
@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-3">
                                 <div class="flex-grow-1 mr-2 mb-3">
-                                    <input type="text" wire:model="newTarification.prix" class="form-control
+                                    <input type="number" wire:model="newTarification.prix" class="form-control
                                     @error("newTarification.prix") is-invalid 
                                     @enderror" placeholder="Le Prix">
                                     @error("newTarification.prix")
@@ -60,29 +60,79 @@
                                 </div> 
                             </div>
                             <div class="col-3 flex-grow-1">
-                                <button class="btn btn-primary">Enregistrer</button>
+                                <button class="btn btn-primary" wire:click.prevent="addTarification">Enregistrer</button>
                                 <button class="btn btn-danger" wire:click.prevent="showTarificationForm">Annuler</button>
                             </div>
                         </div>
                     </form>
                     @endif
+
+                    @if ($isEditTarification)
+                    <form role="form">
+                        <div class="d-flex mb-4 bg-gray-light p-3 pt-4">
+                            <div class="col-3">
+                                <div class="flex-grow-1 mr-2 mb-3">
+                                    <select class="form-control @error("editTarification.article_id") 
+                                        is-invalid @enderror" wire:model="editTarification.article_id">
+                                        <option value="">Article</option>
+                                        @foreach ($articles as $article )
+                                            <option value="{{$article->id}}">{{$article->nom}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error("editTarification.article_id")
+                                        <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div> 
+                            </div>
+                            <div class="col-3">
+                                <div class="flex-grow-1 mr-2 mb-3">
+                                    <select class="form-control @error("editTarification.duree_location_id") 
+                                        is-invalid @enderror" wire:model="editTarification.duree_location_id">
+                                        <option value="">Durée location</option>
+                                        @foreach ($dureeLocat as $duree )
+                                            <option value="{{$duree->id}}">{{$duree->libelle}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error("editTarification.duree_location_id")
+                                        <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div> 
+                            </div>
+                            <div class="col-3">
+                                <div class="flex-grow-1 mr-2 mb-3">
+                                    <input type="number" wire:model="editTarification.prix" class="form-control
+                                    @error("editTarification.prix") is-invalid 
+                                    @enderror" placeholder="Le Prix">
+                                    @error("editTarification.prix")
+                                        <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </div> 
+                            </div>
+                            <div class="col-3 flex-grow-1">
+                                <button class="btn btn-primary" wire:click.prevent="updateTarification">Modifier</button>
+                                <button class="btn btn-danger" wire:click.prevent="editTarificationForm">Annuler</button>
+                            </div>
+                        </div>
+                    </form>
+                    @endif
+
                     <tr class="mt-5">
-                        <th style="width:50%">Article</th>
-                        <th style="width:50%">Durée de location</th>
-                        <th style="width:50%">Prix</th>
-                        <th class="text-center" style="width:20%">Ajouté</th>
-                        <th class="text-center" style="width:30%">Action</th>
+                        <th>Article</th>
+                        <th>Durée de location</th>
+                        <th>Prix</th>
+                        <th class="text-center">Ajouté</th>
+                        <th class="text-center">Action</th>
                     </tr>
                 </thead>
                     <tbody>
                         @foreach($tarifications as $tarif)
                         <tr>
-                            <td>{{optional($tarif->article_id)->nom}}</td>
-                            <td>{{optional($tarif->duree_location)->libelle}}</td>
-                            <td>{{optional($tarif->prix)}}</td>
+                            <td>{{$tarif->article_id}}</td>
+                            <td>{{$tarif->duree_location_id}}</td>
+                            <td>{{$tarif->prix}}</td>
                             <td class="text-center" ><span class="tag tag-success">{{optional($tarif->created_at)->diffforHumans()}}</span></td>
                             <td class="text-center">
-                                <button class="btn btn-link" wire:click.prevent="editTarification({{$tarif->id}})"><i class="far fa-edit"></i></button>
+                                <button class="btn btn-link" wire:click.prevent="editTarificationForm({{$tarif->id}})"><i class="far fa-edit"></i></button>
                                <!-- <button class="btn btn-link" wire:click.prevent="confirmDelete()"><i class="far fa-trash-alt"></i></button>-->
                             </td>
                             </tr>
