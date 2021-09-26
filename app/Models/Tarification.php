@@ -9,6 +9,8 @@ class Tarification extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["prix", "article_id", "duree_location_id"];
+
     public function dureeLocation()
     {
         return $this->belongsTo(DureeLocation::class);

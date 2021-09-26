@@ -10,6 +10,8 @@ class Location extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["dateDebut", "dateFin", "client_id", "user_id", "statut_location_id"];
+
     public function user()
     {
         return $this->belongsTo(User::class);

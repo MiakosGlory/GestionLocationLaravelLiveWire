@@ -10,8 +10,11 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\TarificationController;
 use App\Http\Controllers\PermissionController;*/
 use App\Http\Livewire\Utilisateurs;
+use App\Http\Livewire\Clients;
 use App\Http\Livewire\TypeArticleComp;
 use App\Http\Livewire\Articles;
+use App\Http\Livewire\Tarifications;
+use App\Http\Livewire\Locations;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -52,5 +55,8 @@ Route::get('/ghabil', Utilisateurs::class)->name('habilitation')->middleware('au
 //Route::get('/gutil', [PaiementController::class, 'index'])->name('paiements')->middleware('auth.employe');
 Route::get('/garticle', TypeArticleComp::class)->name('type_article')->middleware('auth.superadmin');
 Route::get('/article', Articles::class)->name('article')->middleware('auth.superadmin');
+Route::get('/gclient', Clients::class)->name('client')->middleware('auth.superadmin');
+Route::get('/gtarif', Tarifications::class)->name('tarification')->middleware('auth.superadmin');
+Route::get('/glocat', Locations::class)->name('location')->middleware('auth.superadmin');
 //Route::get('/gartic', [ArticleController::class, 'index'])->name('articles')->middleware('auth.superadmin');
 //Route::get('/gutil', [TarificationController::class, 'index'])->name('tarifications')->middleware('auth.superadmin');

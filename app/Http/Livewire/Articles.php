@@ -16,7 +16,7 @@ class Articles extends Component
 
     public String $seach = "";
     public $newArticle = "";
-    public $path_image;
+    public $file;
 
     public $editArticle = [];
 
@@ -50,18 +50,18 @@ class Articles extends Component
 
     public function addArticle()
     {
-        $this->validate([
+        $validatedData = $this->validate([
             "newArticle.nom" => ["required", Rule::unique("articles", "nom")],
             "newArticle.numeroDeSerie" => ["required", "max:6", "min:2", Rule::unique("articles", "numeroDeSerie")],
             "newArticle.estDisponible" => "required",
-            "newArticle.type_article_id" => "required"
+            "newArticle.type_article_id" => "required",
+            "newArticle.image" => "image|max:3000"
         ]);
 
-        
         Article::create([
             "nom" => $this->newArticle["nom"],
             "numeroDeSerie" => $this->newArticle["numeroDeSerie"],
-            "image" => "https://fakeimg.pl/350x200/ff0000/000",
+            "image" => $this->file->store('files', 'public'),
             "estDisponible" => $this->newArticle["estDisponible"],
             "type_article_id" => $this->newArticle["type_article_id"]
         ]);

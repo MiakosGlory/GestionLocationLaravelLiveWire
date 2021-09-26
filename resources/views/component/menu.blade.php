@@ -51,15 +51,6 @@
                           <p>Permissions</p>
                         </a>
                     </li>
-                </ul>
-            </li>
-            <li class="nav-item menu-open">
-                <a class="nav-link bg-secondary">
-                    <i class="far fa-circle nav-icon"></i>
-                    <i class="fas fa-angle-left right"></i>
-                    <p>Gestion Articles</p>
-                </a>
-                <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{{route("article")}}" class="nav-link">
                         <i class="fas fa-archive nav-icon"></i>
@@ -72,8 +63,29 @@
                         <p>Type Article</p>
                       </a>
                     </li>
+                </ul>
+            </li>
+            <li class="nav-item menu-open">
+                <a class="nav-link bg-secondary">
+                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-angle-left right"></i>
+                    <p>Gestion Inventaire</p>
+                </a>
+                <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                      <a href="{{route("client")}}" class="nav-link">
+                        <i class="fas fa-archive nav-icon"></i>
+                        <p>Clients</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{route("location")}}" class="nav-link">
+                        <i class="fas fa-th-list nav-icon"></i>
+                        <p>Locations</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route("tarification")}}" class="nav-link">
                           <i class="fas fa-money-check-alt nav-icon"></i>
                           <p>Tarifications</p>
                         </a>
