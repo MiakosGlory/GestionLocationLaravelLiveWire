@@ -3,7 +3,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header bg-secondary d-flex align-items-center">
-                <h3 class="card-title flex-grow-1"><i class="fa fa-list fa-2x"></i>Gestion des Tarifications</h3>
+                <h3 class="card-title flex-grow-1"><i class="fa fa-money-check-alt fa-2x"></i>Gestion des Tarifications</h3>
                 <div class="card-tools d-flex align-items-center">
                     <a href="" class="btn btn-link text-white mr-4 d-block" wire:click.prevent="showTarificationForm"> <i class="fas fa-plus"></i>Ajouter Tarification</a>
                     <div class="input-group input-group-md" style="width: 250px;">
@@ -127,8 +127,8 @@
                     <tbody>
                         @foreach($tarifications as $tarif)
                         <tr>
-                            <td>{{$tarif->article_id}}</td>
-                            <td>{{$tarif->duree_location_id}}</td>
+                            <td>{{$tarif->article->nom}}</td>
+                            <td>{{$tarif->dureeLocation->libelle}}</td>
                             <td>{{$tarif->prix}}</td>
                             <td class="text-center" ><span class="tag tag-success">{{optional($tarif->created_at)->diffforHumans()}}</span></td>
                             <td class="text-center">

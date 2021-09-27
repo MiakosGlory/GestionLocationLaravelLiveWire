@@ -54,12 +54,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 bg-gray-light mb-3 py-4">
+                    <!--<div class="col-12 bg-gray-light mb-3 py-4">
                         <div class="flex-grow-1 mr-2">
                             <input type="file" wire:model="newArticle.image" class="form-control
                                 @error("newArticle.image") is-invalid @enderror">
                         </div> 
-                    </div>
+                    </div>-->
                     <div>
                         <button class="btn btn-success">Enregistrer</button>
                     </div>

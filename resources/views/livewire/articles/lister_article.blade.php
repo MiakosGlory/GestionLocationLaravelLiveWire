@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header bg-primary d-flex align-items-center">
-                <h3 class="card-title flex-grow-1"><i class="fas fa-users fa-2x"></i>Gestion des articles</h3>
+                <h3 class="card-title flex-grow-1"><i class="fas fa-archive fa-2x"></i>Gestion des articles</h3>
                 <div class="card-tools d-flex align-items-center">
                 <a href="" class="btn btn-link text-white mr-4 d-block" wire:click.prevent="addArticleModal"> <i class="fas fa-plus"></i>Ajouter Article</a>
                 <div class="input-group input-group-md" style="width: 250px;">
@@ -19,13 +19,14 @@
                 <table class="table table-head-fixed text-nowrap">
                 <thead>
                     <tr>
-                    <th style="width:25%">Libellé</th>
-                    <th style="width:20%">Numéro de Serie</th>
-                    <th style="width:25%">Disponibilité</th>
-                    <th style="width:20%">Type</th>
-                    <th style="width:25%">Ajouté</th>
-                    <th style="width:20%">Image</th>
-                    <th class="text-center" style="width:30%">Action</th>
+                        <th>Libellé</th>
+                        <th>Numéro de Serie</th>
+                        <th>Disponibilité</th>
+                        <th>Type</th>
+                        <th>Tarification</th>
+                        <th>Ajouté</th>
+                        <th>Image</th>
+                        <th class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,6 +42,13 @@
                             @endif
                         </td>
                         <td>{{$article->typeArticle->nom}}</td>
+                        <td>
+                            @foreach ( $tarification as $tarif)
+                                @if ($article->id == $tarif->article_id)
+                                <button class="btn btn-link" wire:click.prevent="showModalTarification({{$article->id}})"><i class="fa fa-dollar-sign"></i> TARIF</button>
+                                @endif
+                            @endforeach
+                        </td>
                         <td class="text-center" ><span class="tag tag-success">{{$article->created_at
                             ->diffforHumans()}}</span>
                         </td>

@@ -21,9 +21,9 @@
     }).then((result) => {
         if (result.isConfirmed) {
 
-            if(event.detail.message.data.article_id)
+            if(event.detail.message.data.location_id)
             {
-                @this.deleteArticle(event.detail.message.data.article_id);
+                @this.deleteLocation(event.detail.message.data.location_id);
             }
         }
     })

@@ -57,6 +57,20 @@
                                     <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>
+                            <div class="flex-grow-1">
+                                <label>Statut location</label>
+                                <select wire:model="newLocation.statut_location_id"  class="form-control
+                                @error("newLocation.statut_location_id") is-invalid @enderror"
+                                >
+                                    <option value=""></option>
+                                    @foreach ($statut_location as $statut )
+                                        <option value="{{$statut->id}}">{{$statut->nom}}</option>
+                                    @endforeach
+                                </select>
+                                @error("newLocation.statut_location_id")
+                                    <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                     <div>

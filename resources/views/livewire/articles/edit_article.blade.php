@@ -56,13 +56,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 bg-gray-light mb-3 pb-4">
+                    <!--<div class="col-12 bg-gray-light mb-3 pb-4">
                         <label>Image</label>
                         <div class="flex-grow-1 mr-2">
                             <input type="file" wire:model="editArticle.image" class="form-control
                                 @error("editArticle.image") is-invalid @enderror">
                         </div> 
-                    </div>
+                    </div>-->
                     <div>
                         <button class="btn btn-success">Enregistrer</button>
                     </div>

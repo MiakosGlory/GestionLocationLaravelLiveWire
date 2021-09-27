@@ -62,8 +62,6 @@ class Tarifications extends Component
         }
         else
         {
-            
-
             /*$this->editTarification["article_id"] = $tarif->article_id;
             $this->editTarification["duree_location_id"] = $tarif->duree_locattion_id;
             $this->editTarification["prix"] = $tarif->prix;*/
@@ -85,6 +83,7 @@ class Tarifications extends Component
             "duree_location_id" => $this->newTarification["duree_location_id"],
             "article_id" =>  $this->newTarification["article_id"]
         ]);
+        $this->showTarificationForm();
         $this->dispatchBrowserEvent("showSuccessMessage", ["message" => "Tarification bien ajoutée"]);
     }
 

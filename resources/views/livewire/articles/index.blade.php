@@ -1,5 +1,7 @@
 <div>
 
+    @include("livewire.articles.modal_tarif")
+
     @include("livewire.articles.edit_article")
 
     @include("livewire.articles.create_article")
@@ -42,6 +44,17 @@
         })
     })
 </script>
+
+
+<!-- Modal Voir les Tarifs des articles -->
+<script>
+    window.addEventListener("showModalTarification", event => {
+    $("#modalTarification").modal({
+        "show" : true
+    })
+})
+</script>
+
 
 <!-- Modal ajout des articles -->
 <script>

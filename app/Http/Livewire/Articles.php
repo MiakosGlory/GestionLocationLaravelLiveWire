@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Carbon\Carbon;
 use App\Models\Article;
+use App\Models\Tarification;
 use App\Models\TypeArticle;
 use Illuminate\Validation\Rule;
 
@@ -17,6 +18,7 @@ class Articles extends Component
     public String $seach = "";
     public $newArticle = "";
     public $file;
+    public $selectedTarification;
 
     public $editArticle = [];
 
@@ -27,7 +29,10 @@ class Articles extends Component
         $data = [
             "articles" => Article::where("nom", "LIKE", "%{$this->seach}%")
                                                 ->latest()->paginate(5),
-            "typeArticle" => TypeArticle::All()
+            "typeArticle" => TypeArticle::All(),
+            "tarification" => Tarification::All()
+            /*"tarif_article" => Article::where("id", 
+            optional($this->selectedTarification)->id)->get()*/
         ];
 
         return view('livewire.articles.index', $data)
@@ -61,7 +66,7 @@ class Articles extends Component
         Article::create([
             "nom" => $this->newArticle["nom"],
             "numeroDeSerie" => $this->newArticle["numeroDeSerie"],
-            "image" => $this->file->store('files', 'public'),
+            "image" => "https://dummyimage.com/300.png/09f/fff",
             "estDisponible" => $this->newArticle["estDisponible"],
             "type_article_id" => $this->newArticle["type_article_id"]
         ]);
@@ -123,5 +128,10 @@ class Articles extends Component
 
         $this->dispatchBrowserEvent("showSuccessMessage", ["message" => "Article modifié avec succès"]);
         $this->closeEditArticleModal();
+    }
+
+    public function showModalTarification(Article $article)
+    {
+        $this->dispatchBrowserEvent("showModalTarification", []);
     }
 }

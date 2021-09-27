@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header bg-primary d-flex align-items-center">
-                <h3 class="card-title flex-grow-1"><i class="fas fa-users fa-2x"></i>Gestion des utilisateurs</h3>
+                <h3 class="card-title flex-grow-1"><i class="fas fa-user-lock fa-2x"></i>Gestion des utilisateurs</h3>
                 <div class="card-tools d-flex align-items-center">
                 <a href="" class="btn btn-link text-white mr-4 d-block" wire:click.prevent="getButton()"> <i class="fas fa-plus"></i>Ajouter Utilisateur</a>
                 <div class="input-group input-group-md" style="width: 250px;">

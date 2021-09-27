@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Location extends Model
 {
+    public $timestamps = false;
     use HasFactory;
 
     protected $fillable = ["dateDebut", "dateFin", "client_id", "user_id", "statut_location_id"];

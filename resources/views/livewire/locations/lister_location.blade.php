@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header bg-primary d-flex align-items-center">
-                <h3 class="card-title flex-grow-1"><i class="fas fa-users fa-2x"></i>Gestion des locations</h3>
+                <h3 class="card-title flex-grow-1"><i class="fas fa-cart-arrow-down fa-2x"></i>Gestion des locations</h3>
                 <div class="card-tools d-flex align-items-center">
                 <a href="" class="btn btn-link text-white mr-4 d-block" wire:click.prevent="addLocationModal"> <i class="fas fa-plus"></i>Ajouter Location</a>
                 <div class="input-group input-group-md" style="width: 250px;">
@@ -30,14 +30,14 @@
                 <tbody>
                     @foreach ( $locations as $location)
                     <tr>
-                        <td>{{optional($location->dateDebut)}}</td>
-                        <td>{{optional($location->dateFin)}}</td>
-                        <td>{{optional($location->client_id->nom)}} {{optional($location->client_id->prenom)}}</td>
-                        <td>{{optional($location->user_id->nom)}} {{optional($location->user_id->prenom)}}</td>
+                        <td>{{$location->dateDebut}}</td>
+                        <td>{{$location->dateFin}}</td>
+                        <td>{{$location->client->nom}} {{$location->client->prenom}}</td>
+                        <td>{{$location->user->nom}} {{$location->user->prenom}}</td>
                         <td>
-                            @if (optional($location->statut_location_id)->nom == "En cours")
+                            @if ($location->statutLocation->nom == "En cours")
                                 <span class="right badge badge-warning pr-3 pl-3">EN COURS </span>
-                            @elseif (optional($location->statut_location_id)->nom == "Terminée")
+                            @elseif ($location->statutLocation->nom == "Terminée")
                                 <span class="right badge badge-success pr-3 pl-3">TERMINEE</span>
                             @else
                                 <span class="right badge badge-danger pr-3 pl-3">EN ATTENTE</span>

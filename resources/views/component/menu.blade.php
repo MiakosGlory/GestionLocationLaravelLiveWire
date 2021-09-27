@@ -41,7 +41,7 @@
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{{route("habilitation")}}" class="nav-link">
-                        <i class="fas fa-users nav-icon"></i>
+                        <i class="fas fa-user-lock nav-icon"></i>
                         <p>Utilisateurs</p>
                       </a>
                     </li>
@@ -74,13 +74,13 @@
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{{route("client")}}" class="nav-link">
-                        <i class="fas fa-archive nav-icon"></i>
+                        <i class="fas fa-users nav-icon"></i>
                         <p>Clients</p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a href="{{route("location")}}" class="nav-link">
-                        <i class="fas fa-th-list nav-icon"></i>
+                        <i class="fas fa-cart-arrow-down nav-icon"></i>
                         <p>Locations</p>
                       </a>
                     </li>
