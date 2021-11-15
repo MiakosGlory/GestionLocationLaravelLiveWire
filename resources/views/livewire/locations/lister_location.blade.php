@@ -54,7 +54,9 @@
                 </table>
             </div>
             <div class="card-footer">
-                {{$locations->links()}}
+                <div class="float-right">
+                    {{$locations->links()}}
+                </div>
             </div>
         </div>
     </div>

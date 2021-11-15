@@ -7,27 +7,28 @@
             </div>
             <div class="modal-body">
                 <form role="form" wire:submit.prevent="addArticle" enctype="multipart/form-data">
-                    <div class="d-flex mb-4 bg-gray-light p-3">
+                    @if ($errors->any()) 
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error )
+                            <p>{{$error}}</p>
+                        @endforeach
+                    </div>
+                    @endif
+                    <div class="p-3 mb-4 d-flex bg-gray-light">
                         <div class="col-6">
-                            <div class="flex-grow-1 mr-2 mb-3">
+                            <div class="mb-3 mr-2 flex-grow-1">
                                 <input type="text" placeholder="Nom" wire:model="newArticle.nom" class="form-control
                                     @error("newArticle.nom") is-invalid @enderror"
                                 >
-                                @error("newArticle.nom")
-                                    <span class="text-danger">{{$message}}</span>
-                                @enderror
                             </div> 
-                            <div class="flex-grow-1 mr-2">
+                            <div class="mr-2 flex-grow-1">
                                 <input type="text" placeholder="Numéro de série" wire:model="newArticle.numeroDeSerie" class="form-control
                                     @error("newArticle.numeroDeSerie") is-invalid @enderror"
                                 >
-                                @error("newArticle.numeroDeSerie")
-                                    <span class="text-danger">{{$message}}</span>
-                                @enderror
                             </div> 
                         </div>
                         <div class="col-6">
-                            <div class="flex-grow-1 mb-3">
+                            <div class="mb-3 flex-grow-1">
                                 <select wire:model="newArticle.estDisponible"  class="form-control
                                 @error("newArticle.estDisponible") is-invalid @enderror"
                                 >
@@ -35,9 +36,6 @@
                                     <option value="0">Non</option>
                                     <option value="1">Oui</option>
                                 </select>
-                                @error("newArticle.estDisponible")
-                                    <span class="text-danger">{{$message}}</span>
-                                @enderror
                             </div>
                             <div class="flex-grow-1">
                                 <select wire:model="newArticle.type_article_id"  class="form-control
@@ -48,18 +46,34 @@
                                         <option value="{{$type->id}}">{{$type->nom}}</option>
                                     @endforeach
                                 </select>
-                                @error("newArticle.type_article_id")
-                                    <span class="text-danger">{{$message}}</span>
-                                @enderror
                             </div>
                         </div>
                     </div>
-                    <!--<div class="col-12 bg-gray-light mb-3 py-4">
-                        <div class="flex-grow-1 mr-2">
-                            <input type="file" wire:model="newArticle.image" class="form-control
-                                @error("newArticle.image") is-invalid @enderror">
-                        </div> 
-                    </div>-->
+                    @if($proprieteArticle != null)
+                        <div class="mb-4">
+                            <div class="col-6">
+                                <div class="flex-grow-1">
+                                    @foreach ($proprieteArticle as $propriete )
+                                        <label>{{$propriete->nom}} @if(!$propriete->estObligatoire) (optionnel) @endif</label>
+                                        @php
+                                            $field = "newArticle.prop.".$propriete->nom;
+                                        @endphp
+                                        <input type="text" placeholder="Propriété..." wire:model="{{$field}}" class="mb-3 form-control">
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="p-3 mb-4 d-flex bg-gray-light">
+                        <div class="col-6">
+                            @if($addImage)
+                                <img cllass="justify-content-center" src="{{$addImage->temporaryUrl()}}" height="150px;" width="150px;">
+                            @endif
+                        </div>
+                        <div class="col-6">
+                            <input type="file" wire:model="addImage" class="form-control" id="image{{$inputFile}}">
+                        </div>
+                    </div>
                     <div>
                         <button class="btn btn-success">Enregistrer</button>
                     </div>

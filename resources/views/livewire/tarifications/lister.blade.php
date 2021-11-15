@@ -142,7 +142,7 @@
                 </table>
             </div>
             <div class="card-footer">
-                <div class="float-left">
+                <div class="float-right">
                     {{$tarifications->links()}}
                 </div>
             </div>

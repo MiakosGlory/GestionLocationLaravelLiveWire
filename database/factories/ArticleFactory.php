@@ -24,7 +24,7 @@ class ArticleFactory extends Factory
         return [
             "nom" => $this->faker->lastName,
             "numeroDeSerie" => $this->faker->randomNumber,
-            "image" => $this->faker->imageUrl(),
+            "image" => "",
             "estDisponible" => rand(0, 1),
             "type_article_id" => rand(1, 4)
         ];

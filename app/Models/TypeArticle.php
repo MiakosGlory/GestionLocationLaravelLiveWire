@@ -20,4 +20,5 @@ class TypeArticle extends Model
     {
         return $this->hasMany(ProprieteArticle::class);
     }
+    
 }
